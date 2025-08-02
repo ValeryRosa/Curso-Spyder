@@ -5,7 +5,7 @@ Created on Fri Aug  1 19:50:58 2025
 @author: valer
 """
 import pandas as pd
-
+import numpy as np
 datos=pd.read_csv('movies3.csv', encoding='latin1')
 df=pd.DataFrame(datos)
 print(df)
@@ -31,4 +31,6 @@ dinero=df.groupby('genres')['budget'].mean().reset_index()
 print(dinero)
 print("¿Cuál es actor que trae más ganancia?")
 actor=df.groupby('actor_1_name')['gross'].max().reset_index()
+#Generar una sección csv de actor:
+actor.to_csv('actor_ganacias.csv', index=False)
 print(actor)
